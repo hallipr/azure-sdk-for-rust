@@ -14,6 +14,7 @@ rust-version.workspace = true
 man = "0.3.0"
 serde.workspace = true
 serde_json.workspace = true
+toml = { version = "0.8.19", features = ["preserve_order"] }
 
 [lints]
 workspace = true
