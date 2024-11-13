@@ -12,6 +12,7 @@ rust-version.workspace = true
 
 [dependencies]
 man = "0.3.0"
+serde.workspace = true
 serde_json.workspace = true
 
 [lints]
