@@ -1,6 +1,7 @@
 [workspace]
 resolver = "2"
 members = [
+  "sdk/xtask",
   "sdk/typespec",
   "sdk/typespec/typespec_client_core",
   "sdk/typespec/typespec_macros",
