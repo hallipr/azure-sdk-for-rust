@@ -1,7 +1,26 @@
 # serde
 No workspace based package -> package dependencies
 
-## serde/Cargo.toml
+## /Cargo.toml
+```toml
+[workspace]
+members = [
+    "serde",
+    "serde_derive",
+    "serde_derive_internals",
+    "test_suite",
+]
+
+[patch.crates-io]
+serde = { path = "serde" }
+
+[workspace.dependencies]
+proc-macro2 = { version = "1.0.74", default-features = false }
+quote = { version = "1.0.35", default-features = false }
+syn = { version = "2.0.81", default-features = false }
+```
+
+## /serde/Cargo.toml
 ```toml
 [package]
 name = "serde"
@@ -11,7 +30,7 @@ version = "1.0.216"
 serde_derive = { version = "1", optional = true, path = "../serde_derive" }
 ```
 
-## serde_derive/Cargo.toml
+## /serde_derive/Cargo.toml
 ```toml
 [package]
 name = "serde_derive"
@@ -21,7 +40,7 @@ version = "1.0.216"
 serde = { version = "1", path = "../serde" }
 ```
 
-## serde_derive_internals/Cargo.toml
+## /serde_derive_internals/Cargo.toml
 ```toml
 [package]
 name = "serde_derive_internals"
@@ -35,7 +54,30 @@ It looks like serde_derive_internals symlinks in serde_derive/src/internals, the
 # tokio
 No workspace dependencies
 
-## tokio/Cargo.toml
+## /Cargo.toml
+```toml
+[workspace]
+resolver = "2"
+members = [
+  "tokio",
+  "tokio-macros",
+  "tokio-test",
+  "tokio-stream",
+  "tokio-util",
+
+  # Internal
+  "benches",
+  "examples",
+  "stress-test",
+  "tests-build",
+  "tests-integration",
+]
+
+[workspace.metadata.spellcheck]
+config = "spellcheck.toml"
+```
+
+## /tokio/Cargo.toml
 ```toml
 [package]
 name = "tokio"
@@ -55,7 +97,7 @@ tokio-test = { version = "0.4.0", path = "../tokio-test" }
 tokio-stream = { version = "0.1", path = "../tokio-stream" }
 ```
 
-## tokio-macros/Cargo.toml
+## /tokio-macros/Cargo.toml
 ```toml
 [package]
 name = "tokio-macros"
@@ -65,7 +107,7 @@ version = "2.4.0"
 tokio = { version = "1.0.0", path = "../tokio", features = ["full"] }
 ```
 
-## tokio-stream/Cargo.toml
+## /tokio-stream/Cargo.toml
 ```toml
 [package]
 name = "tokio-stream"
