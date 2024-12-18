@@ -1,7 +1,7 @@
 # serde
 No workspace based package -> package dependencies
 
-## /Cargo.toml
+## [Cargo.toml](https://github.com/serde-rs/serde/blob/master/Cargo.toml)
 ```toml
 [workspace]
 members = [
@@ -20,7 +20,7 @@ quote = { version = "1.0.35", default-features = false }
 syn = { version = "2.0.81", default-features = false }
 ```
 
-## /serde/Cargo.toml
+## [serde/Cargo.toml](https://github.com/serde-rs/serde/blob/master/serde/Cargo.toml)
 ```toml
 [package]
 name = "serde"
@@ -30,7 +30,7 @@ version = "1.0.216"
 serde_derive = { version = "1", optional = true, path = "../serde_derive" }
 ```
 
-## /serde_derive/Cargo.toml
+## [serde_derive/Cargo.toml](https://github.com/serde-rs/serde/blob/master/serde_derive/Cargo.toml)
 ```toml
 [package]
 name = "serde_derive"
@@ -40,7 +40,7 @@ version = "1.0.216"
 serde = { version = "1", path = "../serde" }
 ```
 
-## /serde_derive_internals/Cargo.toml
+## [serde_derive_internals/Cargo.toml](https://github.com/serde-rs/serde/blob/master/serde_derive_internals/Cargo.toml)
 ```toml
 [package]
 name = "serde_derive_internals"
@@ -54,7 +54,7 @@ It looks like serde_derive_internals symlinks in serde_derive/src/internals, the
 # tokio
 No workspace dependencies
 
-## /Cargo.toml
+## [Cargo.toml](https://github.com/tokio-rs/tokio/blob/master/Cargo.toml)
 ```toml
 [workspace]
 resolver = "2"
@@ -77,7 +77,7 @@ members = [
 config = "spellcheck.toml"
 ```
 
-## /tokio/Cargo.toml
+## [tokio/Cargo.toml](https://github.com/tokio-rs/tokio/blob/master/tokio/Cargo.toml)
 ```toml
 [package]
 name = "tokio"
@@ -97,7 +97,7 @@ tokio-test = { version = "0.4.0", path = "../tokio-test" }
 tokio-stream = { version = "0.1", path = "../tokio-stream" }
 ```
 
-## /tokio-macros/Cargo.toml
+## [tokio-macros/Cargo.toml](https://github.com/tokio-rs/tokio/blob/master/tokio-macros/Cargo.toml)
 ```toml
 [package]
 name = "tokio-macros"
@@ -107,7 +107,7 @@ version = "2.4.0"
 tokio = { version = "1.0.0", path = "../tokio", features = ["full"] }
 ```
 
-## /tokio-stream/Cargo.toml
+## [tokio-stream/Cargo.toml](https://github.com/tokio-rs/tokio/blob/master/tokio-stream/Cargo.toml)
 ```toml
 [package]
 name = "tokio-stream"
@@ -123,7 +123,7 @@ tokio-test = { version = "0.4", path = "../tokio-test" }
 ```
 
 
-## /tokio-test/Cargo.toml
+## [tokio-test/Cargo.toml](https://github.com/tokio-rs/tokio/blob/master/tokio-test/Cargo.toml)
 ```toml
 [package]
 name = "tokio-test"
@@ -137,7 +137,7 @@ tokio-stream = { version = "0.1.1", path = "../tokio-stream" }
 tokio = { version = "1.2.0", path = "../tokio", features = ["full"] }
 ```
 
-## /tokio-util/Cargo.toml
+## [tokio-util/Cargo.toml](https://github.com/tokio-rs/tokio/blob/master/tokio-util/Cargo.toml)
 ```toml
 [package]
 name = "tokio-util"
