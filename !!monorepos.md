@@ -123,7 +123,7 @@ tokio-test = { version = "0.4", path = "../tokio-test" }
 ```
 
 
-## tokio-test/Cargo.toml
+## /tokio-test/Cargo.toml
 ```toml
 [package]
 name = "tokio-test"
@@ -137,7 +137,7 @@ tokio-stream = { version = "0.1.1", path = "../tokio-stream" }
 tokio = { version = "1.2.0", path = "../tokio", features = ["full"] }
 ```
 
-## tokio-util/Cargo.toml
+## /tokio-util/Cargo.toml
 ```toml
 [package]
 name = "tokio-util"
