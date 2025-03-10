@@ -218,3 +218,21 @@ In general, we prefer taking dependencies on licensed components in the order of
 [TypeSpec]: https://aka.ms/typespec
 [TypeSpec Azure]: https://aka.ms/typespec/azure
 [Visual Studio Code]: https://code.visualstudio.com
+
+## Dependencies
+
+Cargo has dependency version requirements that may only be experienced when packing or publishing crates. The interaction between these requirements makes managing dependencies more difficult in a monorepo that doesn't ship in a single, wholistic release.
+
+The requirements around dependency versions are:
+- `cargo package` can only be called on a package where all of its dependencies have a version range defined.
+  - This doesn't apply to dev-dependencies
+  - e.g. this is not packable `azure_core = { path = "../core" }`, but this is `azure_core = { path = "../core", version = "0.1.2" }`
+- If a dependency includes a version range, a version in that range must exist on the registry
+  - This does apply to dev-dependencies
+  - With this dev-dependency: `azure_core = { path = "../azure_core", version = "0.1.2" }`, if azure_core@0.1.2 isn't published to crates.io, `cargo package` will fail.
+- Packages can be create against unshipped dependencies using the nightly, unstable feature `-Z package-workspace`, but this requires that the dependency graph not be cyclic.
+- Workspace dependencies share a common definition list, `[workspace.dependencies]`, for package dependencies and dev-dependencies
+
+Often, packages will have cyclic dependencies between through a dependency/dev-dependency loop.  As long as the dev side of this loop doesn't specify a version requirement, then a non-cyclic dependency graph can be generated and `cargo +nightly -Zpackage-workspace package` will succeed.
+
+Care should be taken when using `workspace = true` for dev-dependencies.  If a workspace dependency is used as a non-dev dependency, it must include a version req for the dependent packages to be packable.  If the workspace dependency is used as a dev-dependency, it should not include a version req to avoid cycles in the dependency graph. This means that a workspace dependency should not be used as a dependency and as a dev-dependency.
